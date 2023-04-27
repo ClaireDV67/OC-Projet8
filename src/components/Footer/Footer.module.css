@@ -1,0 +1,23 @@
+.footer {
+    background-color: rgb(251, 213, 221);
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+.socialNetworks {
+    margin-left: 20px;
+}
+
+.italic {
+    font-style: italic;
+    font-size: 0.9em;
+}

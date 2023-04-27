@@ -1,0 +1,56 @@
+* {
+    font-family: 'Quicksand';
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+    height: 100%;
+}
+
+main {
+    padding: 0 40px 40px 40px;
+}
+
+body {
+    margin: auto;
+    font-weight: 400;
+}
+
+/* Modification du style pour que le footer reste en bas de fenêtre même lorsque la page est plus petite que la fenêtre */
+#root {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    list-style: none;
+}
+
+/* Pour l'accessibilité */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 576px) {
+    main {
+        padding: 15px 15px 40px 15px;
+    }
+}

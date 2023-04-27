@@ -1,0 +1,23 @@
+.header {
+    background-color: rgb(191, 245, 192);
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ul {
+    display: flex;
+}
+
+.li {
+    padding: 25px 0;
+    font-weight: 500;
+    width: 80px;
+    text-align: center;
+}
+
+.li:hover {
+    border-bottom: 5px rgb(249, 239, 240) solid;
+    padding: 25px 0 20px 0;
+}
