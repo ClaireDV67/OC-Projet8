@@ -1,0 +1,43 @@
+.container {
+    margin: 5px 0 20px 0;
+    height: 20px;
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.629);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.303);
+}
+
+.progress {
+    height: 100%;
+    border-right: 1px solid rgba(0, 0, 0, 0.221);
+    background: linear-gradient(rgb(179, 239, 179), rgb(239, 246, 239), rgb(179, 239, 179));
+    animation: inProgress 500ms 300ms both ease-in-out;
+}
+
+.progress80 {
+    width: 80%;
+}
+
+.progress60 {
+    width: 60%;
+}
+
+.progress40 {
+    width: 40%;
+}
+
+.progress20 {
+    width: 20%;
+}
+
+@keyframes inProgress {
+    0% {
+        transform-origin: 0%;
+        transform: scaleX(0);
+    }
+    100% {
+        transform-origin: 0% 50%;
+        transform: scale(1);
+    }
+}

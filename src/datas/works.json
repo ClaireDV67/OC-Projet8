@@ -1,0 +1,20 @@
+[
+    {
+        "id": "1",
+        "title": "Booki",
+        "picture": "https://github.com/ClaireDV67/OC-Projet8/blob/master/public/images/booki.png",
+        "description": "Booki blablabla"
+    },
+    {
+        "id": "2",
+        "title": "Sophie Bluel",
+        "picture": "./images/bluel.png",
+        "description": "Bluel blablabla"
+    },
+    {
+        "id": "3",
+        "title": "Kasa",
+        "picture": "./images/kasa.png",
+        "description": "Kasa blablabla"
+    }
+]

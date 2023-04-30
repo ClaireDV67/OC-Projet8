@@ -10,8 +10,13 @@ a {
     height: 100%;
 }
 
-main {
-    padding: 0 40px 40px 40px;
+a.active {
+    font-weight: 700;
+}
+
+strong {
+    font-weight: 700;
+    font-style: italic;
 }
 
 body {
@@ -19,12 +24,24 @@ body {
     font-weight: 400;
 }
 
+main {
+    margin: 20px 40px;
+    animation: mainAnimation 600ms ease-in-out 100ms both;
+}
+
 /* Modification du style pour que le footer reste en bas de fenêtre même lorsque la page est plus petite que la fenêtre */
 #root {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 100vh;
+    width: calc(100vw - 40px);
+    max-width: 1900px;
+    min-height: calc(100vh - 20px);
+    margin: 10px auto;
+    border-radius: 15px;
+    background-image: url(../assets/images/floral-background.jpg);
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.471);
+    overflow: hidden;
 }
 
 ul {
@@ -50,7 +67,19 @@ li {
 }
 
 @media (max-width: 576px) {
-    main {
-        padding: 15px 15px 40px 15px;
+    #root {
+        width: 100%;
+        margin: 0 auto;
+        border-radius: 0;
+        box-shadow: none;
+    }
+}
+
+@keyframes mainAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
     }
 }

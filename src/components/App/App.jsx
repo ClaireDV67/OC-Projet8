@@ -3,6 +3,8 @@ import Home from '../../pages/Home/Home'
 import Error from '../../pages/Error/Error'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
+import About from '../../pages/About/About'
+import Work from '../../pages/Work/Work'
 import '../../style/global-style.css'
 
 function App() {
@@ -11,6 +13,8 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/work/:id" element={<Work />} />
         <Route path="*" element={<Error />} />
       </Routes>
       <Footer />
