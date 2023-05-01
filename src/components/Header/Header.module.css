@@ -8,6 +8,10 @@
     z-index: 1;
 }
 
+.iconeNav {
+    display: none;
+}
+
 .title {
     font-family: 'Lobster Two';
     font-weight: 400;
@@ -57,7 +61,7 @@
 
 @media (max-width: 576px) {
     .header {
-        padding: 0 20px;
+        padding: 0 0 0 20px;
         border-radius: 0;
     }
     
@@ -68,16 +72,97 @@
 
     .nav {
         margin-right: 0;
+        position: relative;
+    }
+
+    .iconeNav {
+        display: block;
+        cursor: pointer;
+        border: none;
+        background-color: inherit;
+        padding: 20px;
+    }
+
+    .iconeNav[animation="1"] {
+        animation: menuBurger 300ms 50ms both ease-in-out;
+    }
+
+    .iconeNav[animation="0"] {
+        animation: menuBurgerInv 300ms 50ms both ease-in-out;
+    }
+
+    .hideMenu {
+        display: none;
+    }
+
+    .ul {
+        overflow: hidden;
+        flex-direction: column;
+        position: absolute;
+        right: 1px;
+        top: 50px;
+        background-color: white;
+        border-radius: 0 0 5px 5px;
+        box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.471);
+    }
+
+    .ul[animation="0"] {
+        animation: hideMenuBurger 300ms 0ms both ease-in-out;
+    }
+
+    .ul[animation="1"] {
+        animation: showMenuBurger 300ms 50ms both ease-in-out;
     }
     
     .li {
-        padding: 10px 0;
-        width: 73px;
+        padding: 10px;
+        width: 150px;
+        text-align: right;
         font-size: 1em;
+        transition: none;
+        cursor: pointer;
+        border: 1px solid rgba(0, 0, 0, 0.285);
     }
     
     .li:hover {
-        padding: 10px 0 5px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.285);
+        padding: 10px;
+        transform: scale(1);
+        transition: none;
+        background-color: rgb(225, 247, 225);
+    }
+}
+
+@keyframes menuBurger {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(90deg);
+    }
+}
+
+@keyframes menuBurgerInv {
+    0% {
+        transform: rotate(90deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes hideMenuBurger {
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes showMenuBurger {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
     }
 }
 

@@ -1,6 +1,5 @@
 import styles from "./Home.module.css"
 import Block from "../../components/Block/Block"
-import profilePicture from "../../assets/images/avatar.png"
 import Collapse from "../../components/Collapse/Collapse"
 import { Carousel } from "antd"
 import works from "../../datas/works.json"
@@ -16,8 +15,9 @@ function Home() {
       </NavLink>
     </div>
   )
+
   return (
-    <main role="main" className={styles.main}>
+    <main role="main">
       <section className={styles.presentationContainer}>
         <h2 className="visually-hidden">Présentation</h2>
         <Block>
@@ -25,9 +25,9 @@ function Home() {
           <p>Je termine actuellement ma formation de <strong>Développeur Web</strong> chez OpenClassrooms.</p>
           <p>Je souhaite par la suite travailler en <strong>freelance</strong>.</p>
         </Block>
-        <div className={styles.decoration}>
-          <img className={styles.profilePicture} src={profilePicture} alt="Claire DE VITO" title="Photo de profil" />
-        </div>
+          <div className={styles.decoration}>
+            <img className={styles.profilePicture} src={"/images/avatar.png"} alt="Claire DE VITO" title="Photo de profil" />
+          </div>
       </section>
       <section className={styles.collapseContainer}>
         <h2 className="visually-hidden">Compétences</h2>
@@ -87,6 +87,7 @@ function Home() {
           </div>
         </Block>
       </section>
+      <span className={styles.iconeContainer}><a href="#top" className={styles.icone}><i className="fa-solid fa-angles-up fa-2xl"></i></a></span>
     </main>
   )
 }

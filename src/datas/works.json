@@ -2,19 +2,25 @@
     {
         "id": "1",
         "title": "Booki",
-        "picture": "https://github.com/ClaireDV67/OC-Projet8/blob/master/public/images/booki.png",
-        "description": "Booki blablabla"
+        "picture": "/images/booki.png",
+        "description": "La start-up Booki souhaite développer un site Internet qui permette aux usagers de trouver des hébergements et des activités dans la ville de leur choix. Je suis chargée d'intégrer l'interface du site avec du code HTML et CSS.",
+        "link": "https://github.com/ClaireDV67/OC-Projet2",
+        "model": "/images/booki_maquette.png"
     },
     {
         "id": "2",
         "title": "Sophie Bluel",
-        "picture": "./images/bluel.png",
-        "description": "Bluel blablabla"
+        "picture": "/images/bluel.png",
+        "description": "Je travaille comme développeur front-end pour l'agence ArchiWebos qui comprend 50 salariés. Ayant terminé mon dernier projet avec un peu d'avance, je suis envoyée en renfort comme développeur front-end d'une équipe qui travaille sur la conception du site portfolio d'une architecte d'intérieur. Le site doit être dynamique grâce à JavaScript.",
+        "link": "https://github.com/ClaireDV67/OC-Projet3",
+        "model": "/images/bluel_maquette.png"
     },
     {
         "id": "3",
         "title": "Kasa",
-        "picture": "./images/kasa.png",
-        "description": "Kasa blablabla"
+        "picture": "/images/kasa.png",
+        "description": "Kasa souhaite développer sa nouvelle plateforme web. Ils sont dans le métier de la location d'appartements entre particuliers depuis près de 10 ans maintenant. Avec plus de 500 annonces postées chaque jour, Kasa fait partie des leaders de la location d'appartements entre particuliers en France. Le site de Kasa a été codé il y a maintenant plus de 10 ans en ASP.NET avec un code legacy important. Une refonte totale est nécessaire pour passer à une stack complète en JavaScript avec NodeJS côté back-end, et React côté front-end. Je suis chargée de la partie front-end.",
+        "link": "https://github.com/ClaireDV67/OC-Projet6",
+        "model": "/images/kasa_maquette.png"
     }
 ]
