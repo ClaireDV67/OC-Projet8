@@ -8,6 +8,13 @@
     z-index: 1;
 }
 
+/* Mode dark */
+.block.dark {
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+}
+
+/* Mode mobile */
 @media (max-width: 576px) {
     .block {
         padding: 10px;

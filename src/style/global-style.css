@@ -1,3 +1,4 @@
+/* Balises générales */
 * {
     font-family: 'Quicksand';
     box-sizing: border-box;
@@ -27,22 +28,7 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    animation: mainAnimation 600ms ease-in-out 100ms both;
-}
-
-/* Modification du style pour que le footer reste en bas de fenêtre même lorsque la page est plus petite que la fenêtre */
-#root {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: calc(100vw - 40px);
-    max-width: 1900px;
-    min-height: calc(100vh - 20px);
-    margin: 10px auto;
-    border-radius: 15px;
-    background-image: url(../../public/images/floral-background.jpg);
-    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.471);
-    overflow: hidden;
+    animation: opacityAnimation 1s ease-in-out 50ms both;
 }
 
 ul {
@@ -53,6 +39,64 @@ ul {
 li {
     list-style: none;
 }
+
+/* Style de la page (le footer reste toujours en bas de fenêtre) */
+#root {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1900px;
+    min-height: 100vh;
+    background-image: url(../../public/images/floral-background.jpg);
+    overflow: hidden;
+    margin: auto;
+}
+
+/* Modification du style en mode dark */
+#root.dark {
+    background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url(../../public/images/floral-background.jpg);
+}
+
+/* Icône de retour en haut de page */
+.iconeBack {
+    cursor: pointer;
+    border: none;
+    background-color: inherit;
+    color: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    bottom: 85px;
+    left: 50%;
+    margin-left: -32px;
+    z-index: 99;
+    width: fit-content;
+    opacity: 1;
+    animation: opacityAnimation 600ms;
+}
+
+.iconeBack:hover {
+    color: rgba(0, 0, 0, 0.9);
+    transition: color 400ms;
+}
+
+/* Bouton switch permettant de passer en mode dark/light */
+.ant-switch {
+    background-color: grey !important;
+ }
+
+ .ant-switch:hover {
+    background-color: rgba(128, 128, 128, 0.8) !important;
+ }
+
+ .ant-switch-checked {
+    background-color: rgb(0, 0, 0) !important;
+ }
+
+ .ant-switch-checked:hover {
+    background-color: rgba(0, 0, 0, 0.8) !important;
+ }
 
 /* Pour l'accessibilité */
 .visually-hidden {
@@ -67,20 +111,19 @@ li {
   border: 0;
 }
 
+/* Mode mobile */
 @media (max-width: 576px) {
     main {
         margin: 20px 10px;
     }
-    
-    #root {
-        width: 100%;
-        margin: 0 auto;
-        border-radius: 0;
-        box-shadow: none;
+
+    .iconeBack {
+        bottom: 95px;
     }
 }
 
-@keyframes mainAnimation {
+/* Animations */
+@keyframes opacityAnimation {
     0% {
         opacity: 0;
     }

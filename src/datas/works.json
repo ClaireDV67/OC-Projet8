@@ -2,25 +2,65 @@
     {
         "id": "1",
         "title": "Booki",
-        "picture": "/images/booki.png",
+        "picture": "/images/booki.webp",
         "description": "La start-up Booki souhaite développer un site Internet qui permette aux usagers de trouver des hébergements et des activités dans la ville de leur choix. Je suis chargée d'intégrer l'interface du site avec du code HTML et CSS.",
+        "technos": ["HTML", "CSS"],
+        "skills": [
+            "Installer un environnement de développement front-end",
+            "Intégrer du contenu conformément à une maquette avec HTML et CSS",
+            "Implémenter une interface responsive avec HTML et CSS",
+            "Versionner son projet avec Git et Github"
+        ],
         "link": "https://github.com/ClaireDV67/OC-Projet2",
-        "model": "/images/booki_maquette.png"
+        "linkPage": "https://clairedv67.github.io/OC-Projet2/",
+        "modelDesktop": "/images/booki_maquette.webp",
+        "modelMob": "/images/booki_maquetteMob.webp"
     },
     {
         "id": "2",
         "title": "Sophie Bluel",
-        "picture": "/images/bluel.png",
+        "picture": "/images/bluel.webp",
         "description": "Je travaille comme développeur front-end pour l'agence ArchiWebos qui comprend 50 salariés. Ayant terminé mon dernier projet avec un peu d'avance, je suis envoyée en renfort comme développeur front-end d'une équipe qui travaille sur la conception du site portfolio d'une architecte d'intérieur. Le site doit être dynamique grâce à JavaScript.",
+        "problems": "Pour ce projet, j'ai eu des difficultés avec les écouteurs d'événements, car il se démultipliaient à chaque ouverture de la modale. J'ai vite cerné le problème et l'ai corrigé.",
+        "technos": ["JavaScript"],
+        "skills": [
+            "Récupérer les données utilisateurs dans le JavaScript via des formulaires",
+            "Manipuler les éléments du DOM avec JavaScript",
+            "Gérer les événements utilisateurs avec JavaScript"
+        ],
         "link": "https://github.com/ClaireDV67/OC-Projet3",
-        "model": "/images/bluel_maquette.png"
+        "modelDesktop": "/images/bluel_maquette.webp"
     },
     {
         "id": "3",
         "title": "Kasa",
-        "picture": "/images/kasa.png",
+        "picture": "/images/kasa.webp",
         "description": "Kasa souhaite développer sa nouvelle plateforme web. Ils sont dans le métier de la location d'appartements entre particuliers depuis près de 10 ans maintenant. Avec plus de 500 annonces postées chaque jour, Kasa fait partie des leaders de la location d'appartements entre particuliers en France. Le site de Kasa a été codé il y a maintenant plus de 10 ans en ASP.NET avec un code legacy important. Une refonte totale est nécessaire pour passer à une stack complète en JavaScript avec NodeJS côté back-end, et React côté front-end. Je suis chargée de la partie front-end.",
+        "problems": "Ayant le souci du détail, les principales difficultés rencontrées pour ce projet ont été en rapport avec le design du site. Par exemple, comment maintenir le pied-de-page en bas, même lorsque la hauteur de la fenêtre est grande. Après quelques recherches, les problèmes ont été résolus.",
+        "technos": ["React"],
+        "skills": [
+            "Configurer la navigation entre les pages de l'application avec React Router",
+            "Initialiser une application avec Create React App",
+            "Développer des éléments de l'interface d'un site web grâce à des composants React"
+        ],
         "link": "https://github.com/ClaireDV67/OC-Projet6",
-        "model": "/images/kasa_maquette.png"
+        "linkPage": "https://clairedv67.github.io/OC-Projet6/#/",
+        "modelDesktop": "/images/kasa_maquette.webp",
+        "modelMob": "/images/kasa_maquetteMob.webp"
+    },
+    {
+        "id": "4",
+        "title": "Mon Vieux Grimoire",
+        "picture": "/images/vieuxgrimoire.webp",
+        "description": "Je suis développeuse back-end en freelance dans la région de Lille. J'ai l'habitude de travailler avec Kévin, un développeur front-end plus expérimenté que moi, et qui a déjà un bon réseau de contacts dans le milieu. Kévin me contacte pour me proposer de travailler avec lui en mutualisant nos compétences front / back sur un tout nouveau projet qui lui a été proposé. Il s'agit d'une petite chaîne de librairies qui souhaite ouvrir un site de référencement et de notation de livres.",
+        "problems": "Le principal problème que j'ai rencontré a été dans la création d'une route qui ne semblait pas être prise en compte. Le souci était tout simplement l'ordre des routes, ce que j'ai compris après de longues heures de travail.",
+        "technos": ["Node.js", "Espress.js", "MongoDB"],
+        "skills": [
+                "Implémenter un modèle logique de données conformément à la réglementation",
+                "Stocker des données de manière sécurisée",
+                "Mettre en œuvre des opérations CRUD de manière sécurisée"
+        ],
+        "link": "https://github.com/ClaireDV67/OC-Projet7",
+        "modelDesktop": "/images/vieuxgrimoire_maquette.webp"
     }
 ]

@@ -1,17 +1,27 @@
+/* Titre h2 du projet */
 .title {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
     text-decoration: underline;
     font-size: 1.8em;
 }
 
+.h3 {
+    font-size: 1em;
+    text-decoration: underline;
+    margin-left: 20px;
+}
+
+/* Contenu du bloc */
 .workContainer {
     display: flex;
     flex-direction: column;
     gap: 30px;
     margin-bottom: 30px;
+    align-items: center;
 }
 
+/* Image principale */
 .mainPicture {
     border-radius: 10px;
     max-height: 287px;
@@ -19,34 +29,58 @@
     width: fit-content;
     object-fit: contain;
     object-position: center;
-    margin: auto;
+    margin: 0 auto 30px auto;
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.364);
 }
 
+/* Maquette */
 .pictureModel {
-    width: 100%;
+    width: min-content;
+    max-width: 100%;
     border-radius: 10px;
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.364);
 }
 
-.descriptionContainer {
+/* Conteneur des compétences/technologies/liens */
+.flexContainer {
     display: flex;
-    justify-content: space-around;
-    text-align: justify;
-    gap: 30px;
+    justify-content: space-between;
     align-items: center;
-    margin-left: 30px;
+    width: 100%;
 }
 
-.description {
-    width: 70%;
+/* Paragraphes et listes */
+.p, .list {
+    margin: 0 30px;
+    text-indent: 20px;
+    text-align: justify;
+}
+
+.list {
+    text-indent: 0;
+    margin-bottom: 30px;
+}
+
+.list li:before {
+    content: "✓";
+    margin-right: 15px;
+}
+
+/* Conteneur de liens */
+.linkContainer {
+    text-align: center;
+    margin: 5px 0 10px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 30%;
 }
 
 .link {
-    margin: 5px auto 10px auto;
     transform: scale(1);
     opacity: 1;
     transition: all 300ms;
+    font-size: 3.8em;
 }
 
 .link:hover {
@@ -55,58 +89,56 @@
     transition: all 300ms;
 }
 
-.iconeContainer {
-    margin-top: 35px;
-    text-align: center;
-}
-
-.icone {
-    padding: 10px;
-}
-
-@media (max-width: 992px) and (min-width: 576px) {
-    .descriptionContainer {
+/* Mode tablette */
+@media (max-width: 992px) {
+    .flexContainer {
         flex-direction: column;
-        margin-left: 0;
-        gap: 10px;
     }
 
-    .description {
-        width: 90%;
+    .linkContainer {
+        margin-top: 0;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .link {
+        font-size: 3.5em;
     }
 }
 
+/* Mode mobile */
 @media (max-width: 576px) {
     .title {
         margin-bottom: 20px;
         font-size: 1.4em;
     }
     
+    .h3 {
+        margin-left: 10px;
+    }
+    
     .workContainer {
         gap: 20px;
         margin-bottom: 20px;
     }
-    
-    .descriptionContainer {
-        flex-direction: column;
-        gap: 10px;
-        margin-left: 0;
-    }
-    
-    .description {
-        width: 90%;
-        margin: auto;
-    }
-    
-    .link {
-        margin: 0 auto;
+
+    .p, .list {
+        margin: 0;
     }
 
-    .iconeContainer {
-        margin-top: 15px;
+    .list {
+        margin-bottom: 30px;
     }
     
-    .icone {
-        padding: 5px;
+    .list li:before {
+        margin-right: 5px;
+    }
+
+    .linkContainer {
+        margin-bottom: 20px;
+    }
+
+    .link {
+        font-size: 3em;
     }
 }

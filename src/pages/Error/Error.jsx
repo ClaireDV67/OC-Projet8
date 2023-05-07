@@ -1,14 +1,23 @@
-import { Link } from "react-router-dom"
-import styles from "./Error.module.css"
-import Block from "../../components/Block/Block"
+import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import Block from '../../components/Block/Block'
+import styles from './Error.module.css'
 
 function Error() {
+  // Mettre à jour le titre de la page
+  useEffect(() => {
+    document.title = 'Claire De Vito - Erreur 404'
+  }, [])
+
   return (
-    <main role="main" className={styles.main}>
+    <main role='main' className={styles.main}>
       <Block>
         <h2 className={styles.error}>404</h2>
-        <div className={styles.text}>Oups ! La page que vous demandez n'existe pas.</div>
-        <i className={styles.icone + " fa-solid fa-arrow-right"}></i><Link className={styles.link} to="/">Retourner sur la page d'accueil</Link>
+        <p className={styles.text}>Oups ! La page que vous demandez n'existe pas.</p>
+        <i className={styles.icone + ' fa-solid fa-arrow-right'}></i>
+        <Link className={styles.link} to='/' aria-label="Retourner sur la page d'accueil">
+          Retourner sur la page d'accueil
+        </Link>
       </Block>
     </main>
   )

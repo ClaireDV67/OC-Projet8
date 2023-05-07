@@ -2,6 +2,7 @@
     text-align: center;
 }
 
+/* Bloc 404 */
 .error {
     font-size: 9em;
     font-weight: 500;
@@ -18,10 +19,12 @@
     text-decoration: underline;
 }
 
+/* Icône flèche avant lien retour accueil */
 .icone {
     margin-right: 15px;
 }
 
+/* Mode mobile */
 @media (max-width: 576px) {
     .error {
         font-size: 6em;

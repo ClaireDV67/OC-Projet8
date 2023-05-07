@@ -1,21 +1,39 @@
+import '../../style/global-style.css'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import Home from '../../pages/Home/Home'
+import { Suspense, lazy, useContext, useEffect } from 'react'
 import Error from '../../pages/Error/Error'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import About from '../../pages/About/About'
 import Work from '../../pages/Work/Work'
-import '../../style/global-style.css'
+import AddWork from '../../pages/AddWork/AddWork'
+import Loader from '../Loader/Loader'
+import { ThemeContext } from '../../utils/context/Context'
+const Home = lazy(() => import('../../pages/Home/Home'))
 
 function App() {
+  // Récupération de la valeur du thème depuis le contexte
+  const { theme } = useContext(ThemeContext)
+
+   // Changement du thème de la page en fonction de la valeur du contexte
+  useEffect(() => {
+    if (theme === 'dark') {
+      document.getElementById('root').classList.add('dark')
+    } else {
+      document.getElementById('root').classList.remove('dark')
+    }
+  }, [theme])
+
+  // Structure de l'application
   return (
     <Router>
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/work/:id" element={<Work />} />
-        <Route path="*" element={<Error />} />
+        <Route path='/' element={<Suspense fallback={<Loader />}><Home /></Suspense>} />
+        <Route path='/about' element={<About />} />
+        <Route path='/admincdv28071992addwork' element={<AddWork />} />
+        <Route path='/work/:id' element={<Work />} />
+        <Route path='*' element={<Error />} />
       </Routes>
       <Footer />
     </Router>
