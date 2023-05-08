@@ -1,33 +1,74 @@
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { Carousel } from 'antd'
 import { Parallax, ParallaxProvider } from 'react-scroll-parallax'
 import Block from '../../components/Block/Block'
 import Collapse from '../../components/Collapse/Collapse'
 import ProgressBar from '../../components/ProgressBar/ProgressBar'
-import works from '../../datas/works.json'
+// import datas2 from '../../datas/works.json'
 import { ThemeContext } from '../../utils/context/Context'
 import { scrollToTopSpeed, useScrollToTop } from '../../utils/functions/scrollToTop'
 import styles from './Home.module.css'
+import { database } from '../../firebase'
+import { child, get, ref } from 'firebase/database'
+import { getDownloadURL, getStorage, ref as refS } from 'firebase/storage'
 
 function Home() {
   const { theme } = useContext(ThemeContext)
+  const [datas, setDatas] = useState({})
+  const [worksPictures, setWorksPictures] = useState([])
+  const storage = getStorage()
 
   // Mettre à jour le titre de la page
   useEffect(() => {
     document.title = 'Claire De Vito - Accueil'
   }, [])
 
+  useEffect(() => {
+    const dbRef = ref(database)
+    get(child(dbRef, `works/`))
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          setDatas(snapshot.val())
+        } else {
+          console.log("No data available")
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      })
+    
+  }, [])
+
+  useEffect(() => {
+    const storage = getStorage();
+    const loadImages = async () => {
+      const images = await Promise.all(
+        Object.values(datas).map(async (work) => {
+          const url = await getDownloadURL(refS(storage, `images/${work.title}/${work.title.toLowerCase()}.webp`));
+          return { ...work, imageUrl: url };
+        })
+      )
+      setWorksPictures(images);
+    }
+    loadImages()
+  }, [datas])
+
   // Générer le contenu du carousel à partir des données dans le fichier JSON
-  const worksPictures = () =>
-    works.map((work) => (
-      <div key={`${work.title + work.id}`}>
-        <h3 className='visually-hidden'>{work.title}</h3>
-        <NavLink to={`/work/${work.id}`} onClick={scrollToTopSpeed} aria-label={`Lien vers le projet ${work.title}`}>
-          <img className={styles.carouselPicture} src={work.picture} alt={work.title} title={work.title} />
-        </NavLink>
-      </div>
-  ))
+  const renderPictures = () => {
+    if (worksPictures.length > 0) {
+      return worksPictures.map((work, index) => (
+        <div key={`${work.title + index}`}>
+          <h3 className="visually-hidden">{work.title}</h3>
+          <NavLink to={`/work/${work.title}`} onClick={scrollToTopSpeed} aria-label={`Lien vers le projet ${work.title}`}>
+            <img className={styles.carouselPicture} src={work.imageUrl} alt={work.title} title={work.title} />
+          </NavLink>
+        </div>
+      ));
+    } else {
+      return null;
+    }
+  };
 
   // Définir un état pour afficher ou masquer le bouton 'retour en haut de page'
   const [isVisible, scrollToTop] = useScrollToTop()
@@ -104,7 +145,7 @@ function Home() {
               <h2 className={styles.title}><i aria-hidden className={styles.icone + ' fa-solid fa-briefcase'}></i>Mes projets OpenClassrooms réalisés</h2>
               <div className={styles.carouselContainer}>
                 <Carousel autoplay>
-                  {worksPictures()}
+                  {renderPictures()}
                 </Carousel>
               </div>
             </Block>
