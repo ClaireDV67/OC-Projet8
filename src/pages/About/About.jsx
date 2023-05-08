@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import Block from '../../components/Block/Block'
 import { useScrollToTop } from '../../utils/functions/scrollToTop'
+import codePicture from '../../assets/images/code.webp'
 import styles from './About.module.css'
 
 function About() {
@@ -27,7 +28,7 @@ function About() {
           </Block>
         </section>
         <div className={styles.block2}>
-          <img className={styles.codePicture} src={'/images/code.webp'} alt='Lignes de code' title='Lignes de code' />
+          <img className={styles.codePicture} src={codePicture} alt='Lignes de code' title='Lignes de code' />
         </div>
         <section aria-label='Ma formation' className={styles.block3}>
           <Block>

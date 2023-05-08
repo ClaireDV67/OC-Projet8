@@ -1,5 +1,5 @@
 import '../../style/global-style.css'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { HashRouter, Routes, Route } from 'react-router-dom'
 import { Suspense, lazy, useContext, useEffect } from 'react'
 import Error from '../../pages/Error/Error'
 import Header from '../Header/Header'
@@ -25,7 +25,7 @@ function App() {
 
   // Structure de l'application
   return (
-    <Router>
+    <HashRouter>
       <Header />
       <Routes>
         <Route path='/' element={<Suspense fallback={<Loader />}><Home /></Suspense>} />
@@ -34,7 +34,7 @@ function App() {
         <Route path='*' element={<Error />} />
       </Routes>
       <Footer />
-    </Router>
+    </HashRouter>
   )
 }
 

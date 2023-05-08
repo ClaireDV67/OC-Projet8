@@ -9,6 +9,8 @@ import works from '../../datas/works.json'
 import { ThemeContext } from '../../utils/context/Context'
 import { scrollToTopSpeed, useScrollToTop } from '../../utils/functions/scrollToTop'
 import styles from './Home.module.css'
+import bird from '../../assets/images/bird.webp'
+import avatar from '../../assets/images/avatar.webp'
 
 function Home() {
   const { theme } = useContext(ThemeContext)
@@ -36,7 +38,7 @@ function Home() {
       <ParallaxProvider>
         <main role='main'className={theme === 'dark' ? styles.dark : ''}>
           <Parallax className={styles.parallax} translateX={['-2500px', '800px']}>
-            <img src={'/images/bird.webp'} alt='Oiseau' title='Oiseau' className={styles.bird} />
+            <img src={bird} alt='Oiseau' title='Oiseau' className={styles.bird} />
           </Parallax>
           <section aria-label='Présentation succinte' className={styles.presentationContainer}>
             <h2 className='visually-hidden'>Présentation</h2>
@@ -48,7 +50,7 @@ function Home() {
               </div>
             </Block>
             <div className={styles.decoration}>
-              <img className={styles.profilePicture} src={'/images/avatar.webp'} alt='Avatar de Claire DE VITO' title='Avatar de Claire DE VITO' />
+              <img className={styles.profilePicture} src={avatar} alt='Avatar de Claire DE VITO' title='Avatar de Claire DE VITO' />
             </div>
           </section>
           <section aria-label='Compétences' className={styles.collapseContainer}>
