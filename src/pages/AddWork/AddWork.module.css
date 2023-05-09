@@ -1,0 +1,32 @@
+.form label {
+    margin-right: 15px;
+}
+
+.form div {
+    margin: 15px 0;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid rgba(0, 0, 0, 0.44);
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.284);
+}
+
+.form input, .form textarea {
+    width: 45%;
+}
+
+.form input {
+    margin-top: 10px;
+}
+
+.form .technos, .form .skills {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.form .technos label, .form .skills label {
+    width: 100%;
+    margin-bottom: 10px;
+}

@@ -54,7 +54,7 @@
         "picture": "https://i.ibb.co/nQh2hNw/vieuxgrimoire.webp",
         "description": "Je suis développeuse back-end en freelance dans la région de Lille. J'ai l'habitude de travailler avec Kévin, un développeur front-end plus expérimenté que moi, et qui a déjà un bon réseau de contacts dans le milieu. Kévin me contacte pour me proposer de travailler avec lui en mutualisant nos compétences front / back sur un tout nouveau projet qui lui a été proposé. Il s'agit d'une petite chaîne de librairies qui souhaite ouvrir un site de référencement et de notation de livres.",
         "problems": "Le principal problème que j'ai rencontré a été dans la création d'une route qui ne semblait pas être prise en compte. Le souci était tout simplement l'ordre des routes, ce que j'ai compris après de longues heures de travail.",
-        "technos": ["Node.js", "Espress.js", "MongoDB"],
+        "technos": ["Node.js", "Express.js", "MongoDB"],
         "skills": [
                 "Implémenter un modèle logique de données conformément à la réglementation",
                 "Stocker des données de manière sécurisée",
