@@ -3,7 +3,9 @@ import styles from './Connexion.module.css'
 import { database } from '../../firebase'
 import Block from '../../components/Block/Block'
 import { useNavigate } from 'react-router-dom'
-import { child, get, ref } from 'firebase/database';
+import { child, get, ref } from 'firebase/database'
+import { getTokenKey } from '../../utils/functions/getTokenKey'
+import jwt from 'jsonwebtoken'
 
 function Connexion() {
 const navigate = useNavigate()
@@ -13,37 +15,31 @@ const navigate = useNavigate()
   const [name, setName] = useState('')
   const [mdp, setMdp] = useState('')
 
-  function handleSubmit(event) {
-    event.preventDefault()
-    const dbRef = ref(database)
-    const nameRef = child(dbRef, 'users', name)
-    const mdpRef = child(dbRef, 'users', mdp)
+  const { setAuthCookie } = useAuth()
 
+  function handleSubmit(event) {
+    const dbRef = ref(database)
+    event.preventDefault()
+    console.log(`users/` + name)
+    const nameRef = child(dbRef, `users/` + name)
     get(nameRef)
       .then((snapshot) => {
-        if (!snapshot.exists()) {
-          alert('Nom/MDP erroné')
+        if (snapshot.exists()) {
+          if (snapshot.val() === mdp) {
+            console.log('Connexion réussie')
+            setAuthCookie({ name }, { path: '/' })
+            navigate('/admincdv28071992addwork')
+          } else {
+            console.log('Erreur dans le MDP/Nom')
+          }
         } else {
-          console.log(snapshot)
-          get(mdpRef)
-            .then((snapshot) => {
-                if (!snapshot.exists()) {
-                    alert('Nom/MDP erroné')
-                } else {
-                setIsFormSubmitted(true)
-                // navigate('/admincdv28071992addwork')
-                }
-            })
-            .catch((error) => {
-              console.error(error)
-              alert('Une erreur est survenue lors de la vérification des informations')
-            })
-    }})
-      .catch((error) => {
-        console.error(error)
-        alert('Une erreur est survenue lors de la vérification des informations')
+          console.log('Erreur dans le MDP/Nom')
+        }
       })
-  }
+      .catch((error) => {
+        console.log(error)
+      })
+  }  
 
   function handleNameChange(event) {
     setIsFormSubmitted(false)
@@ -59,17 +55,19 @@ const navigate = useNavigate()
     <main role='main'>
         <Block>
             <form onSubmit={handleSubmit} id='form' className={styles.form}>
-            <div>
-                <label htmlFor='name'>Nom</label>
-                <input type='text' id='name' onBlur={handleNameChange} required />
-            </div>
-            <div>
-                <label htmlFor='mdp'>Mot de Passe</label>
-                <input type='password' id='mdp' onBlur={handleMdpChange} required />
-            </div>
-            <input type='submit' id='buttonSubmit' value='Se connecter'/>
-            {isFormSubmitted && <p>Connecté !</p>}
-        </form>
+              <div>
+                  <label htmlFor='name'>Nom</label>
+                  <input type='text' id='name' onBlur={handleNameChange} required />
+              </div>
+              <div>
+                  <label htmlFor='mdp'>Mot de Passe</label>
+                  <input type='password' id='mdp' onBlur={handleMdpChange} required />
+              </div>
+              <div>
+                <input type='submit' id='buttonSubmit' value='Se connecter'/>
+              {isFormSubmitted && <p>Connecté !</p>}
+              </div>
+          </form>
     </Block>
     </main>
   )

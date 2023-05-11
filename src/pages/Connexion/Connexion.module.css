@@ -1,0 +1,15 @@
+.form label {
+    margin-right: 15px;
+}
+
+.form div {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form input {
+    margin-top: 10px;
+}
