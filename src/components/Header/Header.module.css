@@ -43,7 +43,7 @@
     cursor: pointer;
 }
 
-.li:hover {
+.li:hover, .li:focus-within, .li:active {
     border-bottom: 5px rgb(225, 247, 225) solid;
     padding: 20px 0 15px 0;
     transform: scale(1.1);
@@ -154,7 +154,7 @@
         border-radius: 0 0 5px 5px;
     }
     
-    .li:hover {
+    .li:hover, .li:focus-within, .li:active {
         border-bottom: 1px solid rgba(0, 0, 0, 0.285);
         padding: 10px;
         transform: scale(1);

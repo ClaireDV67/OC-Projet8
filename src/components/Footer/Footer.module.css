@@ -36,7 +36,7 @@
     width: 32px;
 }
 
-.socialNetworks:hover {
+.socialNetworks:hover, .socialNetworks:focus, .socialNetworks:active {
     opacity: 0.7;
 }
 
@@ -63,10 +63,6 @@
 
     .socialNetworks {
         width: 30%;
-    }
-
-    .socialNetworks:hover {
-        opacity: 0.7;
     }
     
     .italic {

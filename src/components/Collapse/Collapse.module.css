@@ -49,7 +49,7 @@
     transition: box-shadow 600ms;
 }
 
-.button:hover {
+.button:hover, .button:focus, .button:active {
     background-color: rgb(225, 247, 225);
     transition: all 400ms;
 }

@@ -101,11 +101,11 @@ function Work() {
                 </ul>
               </div>
               <div className={styles.linkContainer}>
-                <a className={styles.link} href={datas.link} rel='noreferrer' target='_blank'>
+                <a className={styles.link} href={datas.linkGH} rel='noreferrer' target='_blank'>
                   <i className='fa-brands fa-github'></i>
                   <span className='visually-hidden'>Code sur GitHub</span>
                 </a>
-                {datas.linkPage && <a className={styles.link} href={datas.linkPage} rel='noreferrer' target='_blank'>
+                {datas.link && <a className={styles.link} href={datas.link} rel='noreferrer' target='_blank'>
                   <i className='fa-solid fa-link'></i>
                   <span className='visually-hidden'>Projet en ligne sur GitHub Pages</span>
                 </a>}

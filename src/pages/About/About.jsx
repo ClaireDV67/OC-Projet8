@@ -24,7 +24,7 @@ function About() {
             <p>Une fois un bac +2 dans cette matière validé, j'ai réalisé que j'avais besoin d'espace. Étant sportive et aimant la nature, j'ai alors totalement changé de voie, et ai choisi de travailler avec les chiens.</p>
             <p>Fin 2021, j'ai ressenti l'envie de renouer avec mon premier amour, l'<strong>informatique</strong>. Quelques recherches sur internet m'ont amenée à m'intéresser aux langages HTML et CSS, puis au JavaScript.</p>
             <p>Une fois éprise de cette discipline, il m'était impossible de m'arrêter là. J'ai alors pris la décision de débuter une <strong>formation</strong> diplômante, afin d'en apprendre plus sur le métier de <strong>développeur web</strong>.</p>
-            <p>Aujourd'hui, je suis en fin de formation chez OpenClassrooms. Mon objectif est d'allier mon emploi actuel, qui me satisfait pleinement, et ma passion pour le code, en <strong>freelance</strong>.</p>
+            <p>Aujourd'hui, je suis en fin de formation chez OpenClassrooms. Mon objectif est d'allier mon emploi actuel, qui me satisfait pleinement, et ma passion pour le code, en tant que <strong>freelance</strong>.</p>
           </Block>
         </section>
         <div className={styles.block2}>
