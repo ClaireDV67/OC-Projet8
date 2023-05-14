@@ -7,10 +7,8 @@ import Footer from '../Footer/Footer'
 import About from '../../pages/About/About'
 import Work from '../../pages/Work/Work'
 import AddWork from '../../pages/AddWork/AddWork'
-import Connexion from '../../pages/Connexion/Connexion'
 import Loader from '../Loader/Loader'
 import { ThemeContext } from '../../utils/context/Context'
-// import { isAuthenticated } from '../../utils/functions/isAuthenticated'
 const Home = lazy(() => import('../../pages/Home/Home'))
 
 function App() {
@@ -33,9 +31,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Suspense fallback={<Loader />}><Home /></Suspense>} />
         <Route path='/about' element={<About />} />
-        <Route path='/admin' element={<Connexion />} />
-        {/* {isAuthenticated ? (<Route path='/admincdv28071992addwork' element={<AddWork />} />) : (<Route path='/admincdv28071992addwork' element={<div>Unauthorized access</div>} />)} */}
-        <Route path='/admincdv28071992addwork' element={<AddWork />} />
+        <Route path='/admin' element={<AddWork />} />
         <Route path='/work/:id' element={<Work />} />
         <Route path='*' element={<Error />} />
       </Routes>

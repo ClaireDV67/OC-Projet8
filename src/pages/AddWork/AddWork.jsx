@@ -4,10 +4,13 @@ import { ref, set } from 'firebase/database'
 import { database } from '../../firebase'
 import { getStorage, uploadBytes, ref as refS } from 'firebase/storage'
 import Block from '../../components/Block/Block'
+import { getAuth, signInWithEmailAndPassword, signOut } from 'firebase/auth'
 
 function AddWork() {
   const [isFormSubmitted, setIsFormSubmitted] = useState(false)
 
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const [title, setTitle] = useState('')
   const [imageMain, setImageMain] = useState(null)
   const [description, setDescription] = useState('')
@@ -20,60 +23,98 @@ function AddWork() {
   const [modelMob, setModelMob] = useState(null)
 
   const storage = getStorage()
+  const auth = getAuth()
 
   function handleSubmit(event) {
     event.preventDefault()
-    const db = database
-    const mainRef = refS(storage, `images/${title}/${title.toLowerCase()}.webp`)
-    const modelRef = refS(storage, `images/${title}/${title.toLowerCase()}_maquette.webp`)
-    const modelMobRef = refS(storage, `images/${title}/${title.toLowerCase()}_maquette_mob.webp`)
-    set(ref(db, 'works/' + title), {
-      title: title,
-      description: description,
-      problems: problems,
-      technos: technos,
-      skills: skills,
-      linkGH: linkGH,
-      link: link
-    })
-      .then(() => {
-        setIsFormSubmitted(true)
-        document.getElementById('form').reset()
-        setTitle('')
-        setImageMain(null)
-        setDescription('')
-        setProblems('')
-        setTechnos([])
-        setSkills([])
-        setLinkGH('')
-        setLink('')
-        setModel(null)
-        setModelMob(null)
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user
+        console.log("Authentification réussie : ", user)
+        // Envoi des données du formulaire vers Firebase
+        const db = database
+        const mainRef = refS(storage, `images/${title}/${title.toLowerCase()}.webp`)
+        const modelRef = refS(storage, `images/${title}/${title.toLowerCase()}_maquette.webp`)
+        const modelMobRef = refS(storage, `images/${title}/${title.toLowerCase()}_maquette_mob.webp`)
+        set(ref(db, 'works/' + title), {
+          title: title,
+          description: description,
+          problems: problems,
+          technos: technos,
+          skills: skills,
+          linkGH: linkGH,
+          link: link
+        })
+          .then(() => {
+            setIsFormSubmitted(true)
+            console.log('Envoi des données du formulaire réussi')
+            document.getElementById('form').reset()
+            setTitle('')
+            setImageMain(null)
+            setDescription('')
+            setProblems('')
+            setTechnos([])
+            setSkills([])
+            setLinkGH('')
+            setLink('')
+            setModel(null)
+            setModelMob(null)
+          })
+          .catch((error) => {
+            console.log('Erreur dans l\'envoi des données du formulaire : ', error)
+          })
+        uploadBytes(mainRef, imageMain)
+          .then(() => {
+            console.log('Fichier image pincipale uploadé')
+          })
+          .catch((error) => {
+            console.log('Erreur dans l\'envoi de l\'image principale : ', error)
+          })
+        uploadBytes(modelRef, model)
+          .then(() => {
+            console.log('Fichier image maquette uploadé')
+          })
+          .catch((error) => {
+            console.log('Erreur dans l\'envoi de l\'image maquette : ', error)
+          })
+        if (modelMob !== null) {
+          uploadBytes(modelMobRef, modelMob)
+            .then(() => {
+              console.log('Fichier image maquette mobile uploadé')
+            })
+            .catch((error) => {
+              console.log('Erreur dans l\'envoi de l\'image maquette mobile : ', error)
+            })
+        }
       })
       .catch((error) => {
-        console.log(error)
+        console.log('Erreur dans l\'authentification : ', error)
+        alert('Erreur dans l\'e-mail ou le mot-de-passe')
       })
-    uploadBytes(mainRef, imageMain)
+  }
+
+  function handleSignOut(event) {
+    event.preventDefault()
+    signOut(auth)
       .then(() => {
-        console.log('Fichier image uploadé')
+        // Sign-out successful
+        console.log('Utilisateur déconnecté')
       })
       .catch((error) => {
-        console.log(error)
+        // An error happened
+        console.log('Erreur lors de la déconnexion : ', error)
       })
-    uploadBytes(modelRef, model)
-      .then(() => {
-        console.log('Fichier image uploadé')
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-    uploadBytes(modelMobRef, modelMob)
-      .then(() => {
-        console.log('Fichier image uploadé')
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+  }
+
+  function handleEmailChange(event) {
+    setIsFormSubmitted(false)
+    setEmail(event.target.value)
+  }
+
+  function handlePasswordChange(event) {
+    setIsFormSubmitted(false)
+    setPassword(event.target.value)
   }
 
   function handleTitleChange(event) {
@@ -135,9 +176,22 @@ function AddWork() {
 
   return (
     <main role='main'>
-        <Block>
-            <form onSubmit={handleSubmit} id='form' className={styles.form}>
+      <Block>
+        <form onSubmit={handleSubmit} id='form' className={styles.form}>
+          <fieldset>
+            <legend>Connexion</legend>
             <div>
+                <label htmlFor='email'>E-mail</label>
+                <input type='text' id='email' onBlur={handleEmailChange} required />
+              </div>
+              <div>
+                <label htmlFor='mdp'>Mot de Passe</label>
+                <input type='password' id='mdp' onBlur={handlePasswordChange} required />
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>Ajouter un projet</legend>
+              <div>
                 <label htmlFor='title'>Titre</label>
                 <input type='text' id='title' onBlur={handleTitleChange} required />
             </div>
@@ -187,10 +241,14 @@ function AddWork() {
                 <label htmlFor='modelMob'>Maquette mobile</label>
                 <input type='file' id='modelMob' onBlur={handleModelMobChange} />
             </div>
-            <input type='submit' id='buttonSubmit' value='Ajouter le travail'/>
+          </fieldset>
+          <div className={styles.button}>
+            <input type='submit' id='buttonSubmit' className={styles.buttonSubmit} value='Ajouter le travail'/>
             {isFormSubmitted && <p>Envoyé !</p>}
+            <button className={styles.buttonSubmit} onClick={handleSignOut}>Se déconnecter</button>
+          </div>
         </form>
-    </Block>
+      </Block>
     </main>
   )
 }
