@@ -84,11 +84,9 @@ function Home() {
           <section aria-label='Présentation succinte' className={styles.presentationContainer}>
             <h2 className='visually-hidden'>Présentation</h2>
             <Block>
-              <div className={styles.textAnimation}>
-                <p>Bonjour, je suis <strong>Claire De Vito</strong>.</p>
-                <p>Je termine actuellement ma formation de <strong>Développeur Web</strong> chez OpenClassrooms.</p>
-                <p>Je souhaite par la suite proposer mes services en <strong>freelance</strong>.</p>
-              </div>
+              <p>Bonjour, je suis <strong>Claire De Vito</strong>.</p>
+              <p>Je termine actuellement ma formation de <strong>Développeur Web</strong> chez OpenClassrooms.</p>
+              <p>Je souhaite par la suite proposer mes services en tant que <strong>freelance</strong>.</p>
             </Block>
             <div className={styles.decoration}>
               <img className={styles.profilePicture} src={avatar} alt='Avatar de Claire DE VITO' title='Avatar de Claire DE VITO' />
